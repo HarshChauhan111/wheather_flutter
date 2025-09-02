@@ -28,9 +28,9 @@ class _WheatherScreenState extends State<WheatherScreen> {
   String cityName ="Rajkot";
   Future<Map<String,dynamic>> getCurrentWheather() async {
     try{  
-      
+      String apiKey = dotenv.env['API_KEY'] ?? 'API not found';
       final res= await http.get(
-      Uri.parse('https://api.openweathermap.org/data/2.5/forecast?q=$cityName&APPID=8ba7da59e1b09cbca967279ff6affd1e'), 
+      Uri.parse('https://api.openweathermap.org/data/2.5/forecast?q=$cityName&APPID=$apiKey'), 
       );
 
       final data=jsonDecode(res.body);
